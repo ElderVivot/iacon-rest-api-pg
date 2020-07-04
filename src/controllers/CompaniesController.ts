@@ -15,18 +15,20 @@ class CompaniesController {
 
     async upsert (request: Request, response: Response): Promise<Companies | any> {
         try {
-            let companies
-            const { code } = request.body
-            const existCompanie = await getRepository(Companies).findOne({ code })
-            if (existCompanie) {
-                companies = await getRepository(Companies).update({ code }, request.body)
+            const companies = request.body
+            const companiesUpdated = []
 
-                const companiesUpdate = await getRepository(Companies).findOne({ code })
-                return response.json(companiesUpdate)
-            } else {
-                companies = await getRepository(Companies).save(request.body)
+            for (const companie of companies) {
+                const { code } = companie
+                const existCompanie = await getRepository(Companies).findOne({ code })
+                if (existCompanie) {
+                    await getRepository(Companies).update({ code }, companie)
+                    companiesUpdated.push(await getRepository(Companies).findOne({ code }))
+                } else {
+                    companiesUpdated.push(await getRepository(Companies).save(companie))
+                }
             }
-            return response.json(companies)
+            return response.json(companiesUpdated)
         } catch (error) {
             return response.status(500).json({ message: 'Error save CompaniesController' + error })
         }
