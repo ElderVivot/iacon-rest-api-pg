@@ -17,7 +17,7 @@ export default class Companies {
     @Column({ unique: true })
     code: string;
 
-    @Column()
+    @Column({ nullable: true })
     name: string;
 
     @Column({ nullable: true })
@@ -26,7 +26,7 @@ export default class Companies {
     @Column()
     typeCgce: string;
 
-    @Column()
+    @Column({ nullable: true })
     cgce: string;
 
     @Column()
@@ -44,7 +44,7 @@ export default class Companies {
     @Column({ nullable: true })
     ramo: string;
 
-    @Column()
+    @Column({ nullable: true })
     dateInicialAsCompanie: Date;
 
     @Column({ nullable: true })

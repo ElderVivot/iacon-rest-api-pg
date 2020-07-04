@@ -12,7 +12,7 @@ import routes from './routes'
 createConnection(typeOrmConfig).then(_ => {
     const app = express()
 
-    app.use(bodyParser.json())
+    app.use(bodyParser.json({ limit: '100mb' }))
     app.use(routes)
     app.use(cors())
 
