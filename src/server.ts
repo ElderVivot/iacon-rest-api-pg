@@ -1,14 +1,24 @@
-import express from 'express'
-// import routes from './routes'
-// import path from 'path'
+import bodyParser from 'body-parser'
 import cors from 'cors'
+import express from 'express'
+import 'reflect-metadata'
+import { createConnection } from 'typeorm'
 
-const app = express()
+import typeOrmConfig from './config/typeorm'
+import routes from './routes'
+// import path from 'path'
 
-app.use(express.json())
-// app.use(routes)
-app.use(cors())
+// create typeorm connection
+createConnection(typeOrmConfig).then(_ => {
+    const app = express()
 
-// app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))
+    app.use(bodyParser.json())
+    app.use(routes)
+    app.use(cors())
 
-app.listen(3330, () => console.log('Executing ...'))
+    // app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))
+
+    app.listen(3330, () => console.log('Executing ...'))
+}).catch(
+    error => console.log(error)
+)

@@ -16,7 +16,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "eslint-plugin-import-helpers"
     ],
     "rules": {
         "indent": [
@@ -69,30 +70,30 @@
         "class-methods-use-this": "off",
         "import/extensions": [
             "error",
-            "ignorePackages",
+            "never",
             {
                 "ts": "never"
             }
+        ],
+        "import-helpers/order-imports": [
+            "warn",
+            {
+                "newlinesBetween": "always", // new line between groups
+                "groups": [
+                    "module",
+                    "/^@server\/shared/",
+                    "/^@/",
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "ignoreCase": true
+                }
+            }
         ]
-        // "import-helpers/order-imports": [
-        //     "warn",
-        //     {
-        //         "newlinesBetween": "always", // new line between groups
-        //         "groups": [
-        //             "module",
-        //             "/^@server\/shared/",
-        //             "/^@/",
-        //             [
-        //                 "parent",
-        //                 "sibling",
-        //                 "index"
-        //             ]
-        //         ],
-        //         "alphabetize": {
-        //             "order": "asc",
-        //             "ignoreCase": true
-        //         }
-        //     }
-        // ]
     }
 }
