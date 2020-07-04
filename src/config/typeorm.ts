@@ -1,3 +1,4 @@
+import path from 'path'
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
 import 'dotenv/config'
 
@@ -10,14 +11,13 @@ const typeOrmConfig: PostgresConnectionOptions = {
     database: process.env.DB_NAME,
     synchronize: true,
     logging: false,
-    entities: ['src/migration/**/*.ts'],
-    subscribers: [
-        'src/subscriber/**/*.ts'
-    ],
+    entities: [path.resolve(__dirname, '../entity/**/*.ts')],
+    migrations: [path.resolve(__dirname, '../migrations/**/*.ts')],
+    subscribers: [path.resolve(__dirname, '../subscriber/**/*.ts')],
     cli: {
-        entitiesDir: 'src/entity',
-        migrationsDir: 'src/migration',
-        subscribersDir: 'src/subscriber'
+        entitiesDir: path.resolve(__dirname, '../entity'),
+        migrationsDir: path.resolve(__dirname, '../migrations'),
+        subscribersDir: path.resolve(__dirname, '../subscriber')
     }
 }
 

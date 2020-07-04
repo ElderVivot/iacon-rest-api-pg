@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity()
-export class Companies {
+export default class Companies {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -10,6 +10,9 @@ export class Companies {
 
     @UpdateDateColumn()
     updatedAt: Date
+
+    @Column({ default: false })
+    deletedInOriginalDatabase: boolean
 
     @Column({ unique: true })
     code: string;
