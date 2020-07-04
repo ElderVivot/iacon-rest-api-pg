@@ -20,6 +20,6 @@
     ],
     "rules": {
         "indent": ["error", 4],
-        "eol-last": ["error", "never"]
+        "eol-last": ["error", "never"] // end-of-file never 'enter'
     }
 }
