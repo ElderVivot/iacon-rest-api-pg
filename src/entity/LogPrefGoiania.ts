@@ -14,23 +14,29 @@ export default class LogPrefGoiania {
     @UpdateDateColumn()
     updatedAt: Date
 
-    @ManyToOne(type => PrefGoianiaAccess, prefGoianiaAccess => prefGoianiaAccess.logsPrefGoiania)
+    @ManyToOne(type => PrefGoianiaAccess, prefGoianiaAccess => prefGoianiaAccess.logsPrefGoiania, { onDelete: 'CASCADE' })
     prefGoianiaAccess: PrefGoianiaAccess;
 
-    @Column()
+    @Column({ nullable: true })
     inscricaoMunicipal: String
 
-    @Column()
+    @Column({ nullable: true })
+    codeCompanie: string
+
+    @Column({ nullable: true })
     nameCompanie: string
 
     @Column()
     hourLog: Date
 
-    @Column()
+    @Column({ nullable: true })
     dateStartDown: Date
 
-    @Column()
+    @Column({ nullable: true })
     dateEndDown: Date
+
+    @Column()
+    typeLog: 'success' | 'error' | 'warning'
 
     @Column()
     messageLog: String

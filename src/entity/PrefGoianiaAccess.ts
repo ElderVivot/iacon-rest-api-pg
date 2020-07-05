@@ -23,6 +23,9 @@ export default class PrefGoianiaAccess {
     @Column()
     name: string
 
-    @OneToMany(type => LogPrefGoiania, logPrefGoiania => logPrefGoiania.prefGoianiaAccess)
-    logsPrefGoiania: LogPrefGoiania[];
+    @Column({ default: true })
+    active: boolean
+
+    @OneToMany(type => LogPrefGoiania, logPrefGoiania => logPrefGoiania.prefGoianiaAccess, { onDelete: 'CASCADE' })
+    logsPrefGoiania: LogPrefGoiania[]
 }
