@@ -1,7 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm'
+
+import LogPrefGoiania from './LogPrefGoiania'
 
 @Entity()
-export default class Companies {
+export default class PrefGoianiaAccess {
     @PrimaryGeneratedColumn()
     id: number
 
@@ -19,4 +22,7 @@ export default class Companies {
 
     @Column()
     name: string
+
+    @OneToMany(type => LogPrefGoiania, logPrefGoiania => logPrefGoiania.prefGoianiaAccess)
+    logsPrefGoiania: LogPrefGoiania[];
 }
