@@ -41,6 +41,9 @@ export default class LogPrefGoiania {
     @Column()
     messageLog: String
 
+    @Column({ nullable: true })
+    messageError: String
+
     @Column()
     urlImageDown: String
 }
