@@ -12,8 +12,8 @@ export default class SettingsDownNotes {
     updatedAt: Date
 
     @Column({ default: 'C:/notas_fiscais/goiania/logs/hourLog/accessGoiania/nameCompanieWithIM' })
-    folderToSaveLog: String
+    folderToSaveLogGoiania: String
 
     @Column({ default: 'C:/notas_fiscais/goiania/xmls/nameCompanieWithIM/year/month' })
-    folderToSaveXMLs: String
+    folderToSaveXMLsGoiania: String
 }
