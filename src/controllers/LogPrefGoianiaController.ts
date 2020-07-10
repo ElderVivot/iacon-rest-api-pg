@@ -15,6 +15,24 @@ class LogPrefGoianiaController {
         }
     }
 
+    async showMaxDateEndDown (request: Request, response: Response): Promise<LogPrefGoiania | any> {
+        try {
+            const { inscricaoMunicipal } = request.query
+            const logPrefGoiania = await getRepository(LogPrefGoiania).query(
+                `SELECT MAX(logs."dateEndDown") AS dateDownMax
+                   FROM log_pref_goiania AS logs
+                  WHERE logs."inscricaoMunicipal" = $1
+                    AND logs."typeLog" = 'success'`,
+                [inscricaoMunicipal]
+            )
+            console.log(`- [controllers-LogPrefGoianiaController.showMaxDateEndDown] --> Success --> ${logPrefGoiania.length} length`)
+            return response.json(logPrefGoiania[0])
+        } catch (error) {
+            console.log(`- [controllers-LogPrefGoianiaController.showMaxDateEndDown] --> Error --> ${error}`)
+            return response.status(500).json({ message: 'Error showMaxDateEndDown LogPrefGoianiaController' + error })
+        }
+    }
+
     async store (request: Request, response: Response): Promise<LogPrefGoiania | any> {
         try {
             const logPrefGoiania = await getRepository(LogPrefGoiania).save(request.body)

@@ -18,7 +18,8 @@ createConnection(typeOrmConfig).then(_ => {
 
     // app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))
 
-    app.listen(3330, () => console.log('Executing ...'))
+    const port = 3330
+    app.listen(port, () => console.log(`Executing Server API - TypeORM with REST in port ${port} !`))
 }).catch(
     error => console.log(error)
 )

@@ -15,13 +15,13 @@ const settingsDownNotesController = new SettingsDownNotesController()
 
 routes.get('/companies', companiesController.index)
 routes.put('/companies', companiesController.upsert)
-routes.get('/companies', companiesController.show)
 
 routes.get('/pref_goiania_access', prefGoianiaAccessController.index)
 routes.put('/pref_goiania_access', prefGoianiaAccessController.upsertMany)
 
 routes.get('/log_pref_goiania', logPrefGoianiaController.index)
 routes.post('/log_pref_goiania', logPrefGoianiaController.store)
+routes.get('/log_pref_goiania_max_date_down', logPrefGoianiaController.showMaxDateEndDown)
 
 routes.get('/settings_down_notes', settingsDownNotesController.index)
 routes.put('/settings_down_notes/:id', settingsDownNotesController.upsert)

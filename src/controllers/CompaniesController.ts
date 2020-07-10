@@ -5,25 +5,14 @@ import Companies from '../entity/Companies'
 
 class CompaniesController {
     async index (request: Request, response: Response): Promise<Companies[] | any> {
+        const queries = request.query
         try {
-            const companies = await getRepository(Companies).find()
+            const companies = await getRepository(Companies).find({ where: [{ ...queries }] })
             console.log(`- [controllers-CompaniesController.index] --> Success --> ${companies.length} length`)
             return response.json(companies)
         } catch (error) {
             console.log(`- [controllers-CompaniesController.index] --> Error --> ${error}`)
             return response.status(500).json({ message: 'Error index CompaniesController' + error })
-        }
-    }
-
-    async show (request: Request, response: Response): Promise<Companies | any> {
-        const params = request.params
-        try {
-            const companie = await getRepository(Companies).find({ where: [{ ...params }] })
-            console.log(`- [controllers-CompaniesController.show] --> Success --> ${companie.length} length`)
-            return response.json(companie)
-        } catch (error) {
-            console.log(`- [controllers-CompaniesController.show] --> Error --> ${error}`)
-            return response.status(500).json({ message: 'Error show CompaniesController' + error })
         }
     }
 
