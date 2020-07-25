@@ -18,7 +18,7 @@ class CompaniesController {
 
     async upsert (request: Request, response: Response): Promise<Companies | any> {
         try {
-            const companies = request.body.resultQuerie
+            const companies = request.body.resultQuerie || []
             const companiesUpdated = []
 
             for (const companie of companies) {

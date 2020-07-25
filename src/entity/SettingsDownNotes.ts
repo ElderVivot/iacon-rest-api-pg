@@ -16,4 +16,7 @@ export default class SettingsDownNotes {
 
     @Column({ default: 'C:/notas_fiscais/goiania/xmls/nameCompanieWithIM/year/month' })
     folderToSaveXMLsGoiania: String
+
+    @Column({ nullable: true })
+    folderToSaveXMLsGoianiaRotinaAutomatica: String
 }

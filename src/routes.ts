@@ -17,7 +17,8 @@ routes.get('/companies', companiesController.index)
 routes.put('/companies', companiesController.upsert)
 
 routes.get('/pref_goiania_access', prefGoianiaAccessController.index)
-routes.put('/pref_goiania_access', prefGoianiaAccessController.upsertMany)
+routes.put('/pref_goiania_access', prefGoianiaAccessController.upsert)
+routes.put('/pref_goiania_access_upsert_many', prefGoianiaAccessController.upsertMany)
 
 routes.get('/log_pref_goiania', logPrefGoianiaController.index)
 routes.post('/log_pref_goiania', logPrefGoianiaController.store)

@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 @Entity()
 export default class Companies {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: number
 
     @CreateDateColumn()
     createdAt: Date
@@ -15,47 +15,47 @@ export default class Companies {
     deletedInOriginalDatabase: boolean
 
     @Column({ unique: true })
-    code: string;
+    code: string
 
     @Column({ nullable: true })
-    name: string;
+    name: string
 
     @Column({ nullable: true })
-    nickName: string;
+    nickName: string
 
     @Column()
-    typeCgce: string;
+    typeCgce: string
 
     @Column({ nullable: true })
-    cgce: string;
+    cgce: string
 
     @Column()
-    status: string;
+    status: string
 
     @Column({ nullable: true })
-    ddd: number;
+    ddd: number
 
     @Column({ nullable: true })
-    fone: string;
+    fone: string
 
     @Column({ nullable: true })
-    email: string;
+    email: string
 
     @Column({ nullable: true })
-    ramo: string;
+    ramo: string
 
     @Column({ nullable: true })
-    dateInicialAsCompanie: Date;
+    dateInicialAsCompanie: Date
 
     @Column({ nullable: true })
-    dateInicialAsClient: Date;
+    dateInicialAsClient: Date
 
     @Column({ nullable: true })
-    dateFinalAsClient: Date;
+    dateFinalAsClient: Date
 
     @Column({ nullable: true })
-    inscricaoEstadual: string;
+    inscricaoEstadual: string
 
     @Column({ nullable: true })
-    inscricaoMunicipal: string;
+    inscricaoMunicipal: string
 }

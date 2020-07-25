@@ -23,8 +23,8 @@ class PrefGoianiaAccessController {
             for (const access of prefGoianiaAccess) {
                 const { user } = access
                 try {
-                    const existCompanie = await getRepository(PrefGoianiaAccess).findOne({ user })
-                    if (existCompanie) {
+                    const exist = await getRepository(PrefGoianiaAccess).findOne({ user })
+                    if (exist) {
                         await getRepository(PrefGoianiaAccess).update({ user }, access)
                         prefGoianiaAccessUpdated.push(await getRepository(PrefGoianiaAccess).findOne({ user }))
                     } else {
@@ -38,6 +38,27 @@ class PrefGoianiaAccessController {
             return response.json(prefGoianiaAccessUpdated)
         } catch (error) {
             console.log(`- [controllers-PrefGoianiaAccessController.upsertMany] --> Error --> ${error}`)
+            return response.status(500).json({ message: 'Error save PrefGoianiaAccessController' + error })
+        }
+    }
+
+    async upsert (request: Request, response: Response): Promise<PrefGoianiaAccess | any> {
+        try {
+            const access = request.body
+            const { user } = access
+            let goianiaAcess
+
+            const exist = await getRepository(PrefGoianiaAccess).findOne({ user })
+            if (exist) {
+                await getRepository(PrefGoianiaAccess).update({ user }, access)
+                goianiaAcess = await getRepository(PrefGoianiaAccess).findOne({ user })
+            } else {
+                goianiaAcess = await getRepository(PrefGoianiaAccess).save(access)
+            }
+            console.log(`- [controllers-PrefGoianiaAccessController.upsert] --> Sucess --> ${goianiaAcess.length} length`)
+            return response.json(goianiaAcess)
+        } catch (error) {
+            console.log(`- [controllers-PrefGoianiaAccessController.upsert] --> Error --> ${error}`)
             return response.status(500).json({ message: 'Error save PrefGoianiaAccessController' + error })
         }
     }

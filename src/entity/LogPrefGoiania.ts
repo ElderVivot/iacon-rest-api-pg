@@ -46,4 +46,7 @@ export default class LogPrefGoiania {
 
     @Column()
     urlImageDown: String
+
+    @Column({ nullable: true, default: 0 })
+    qtdNotesDown: Number
 }
