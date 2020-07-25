@@ -12,9 +12,10 @@ import routes from './routes'
 createConnection(typeOrmConfig).then(_ => {
     const app = express()
 
-    app.use(bodyParser.json({ limit: '100mb' }))
-    app.use(routes)
     app.use(cors({ origin: '*' }))
+    app.use(bodyParser.json({ limit: '100mb' }))
+    app.use(bodyParser.urlencoded({ extended: false }))
+    app.use(routes)    
 
     // app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))
 
