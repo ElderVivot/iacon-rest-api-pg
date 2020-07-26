@@ -44,9 +44,15 @@ class PrefGoianiaAccessController {
 
     async upsert (request: Request, response: Response): Promise<PrefGoianiaAccess | any> {
         try {
-            const access = request.body
-            const { user } = access
+            // console.log(request.body)
+            const accessOriginal = request.body
+            const { user, name, password, active } = accessOriginal
             let goianiaAcess
+
+            const newActive = String(active) === 'true'
+            const access = {
+                user, name, password, active: newActive
+            }
 
             const exist = await getRepository(PrefGoianiaAccess).findOne({ user })
             if (exist) {
@@ -55,7 +61,7 @@ class PrefGoianiaAccessController {
             } else {
                 goianiaAcess = await getRepository(PrefGoianiaAccess).save(access)
             }
-            console.log(`- [controllers-PrefGoianiaAccessController.upsert] --> Sucess --> ${goianiaAcess.length} length`)
+            console.log(`- [controllers-PrefGoianiaAccessController.upsert] --> Sucess --> ${1} length`)
             return response.json(goianiaAcess)
         } catch (error) {
             console.log(`- [controllers-PrefGoianiaAccessController.upsert] --> Error --> ${error}`)
