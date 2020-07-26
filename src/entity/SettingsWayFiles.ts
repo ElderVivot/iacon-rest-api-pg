@@ -11,12 +11,27 @@ export default class SettingsDownNotes {
     @UpdateDateColumn()
     updatedAt: Date
 
-    @Column({ default: 'C:/notas_fiscais/goiania/logs/hourLog/accessGoiania/nameCompanieWithIM' })
+    @Column({ nullable: true })
     folderToSaveLogGoiania: String
 
-    @Column({ default: 'C:/notas_fiscais/goiania/xmls/nameCompanieWithIM/year/month' })
+    @Column({ nullable: true })
     folderToSaveXMLsGoiania: String
 
     @Column({ nullable: true })
     folderToSaveXMLsGoianiaRotinaAutomatica: String
+
+    @Column({ nullable: true })
+    folderToReadSpedFiscal: String
+
+    @Column({ nullable: true })
+    folderToReadSpedContribuicoes: String
+
+    @Column({ nullable: true })
+    folderToReadDCTF: String
+
+    @Column({ nullable: true })
+    folderToReadSimplesNacional: String
+
+    @Column({ nullable: true })
+    folderToReadNFe: String
 }
