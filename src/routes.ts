@@ -2,6 +2,7 @@ import express from 'express'
 
 import CompaniesController from './controllers/CompaniesController'
 import LogPrefGoianiaController from './controllers/LogPrefGoianiaController'
+import NotesNfseController from './controllers/NotesNfseController'
 import PrefGoianiaAccessController from './controllers/PrefGoianiaAccessController'
 import SettingsWayFilesController from './controllers/SettingsWayFilesController'
 
@@ -12,6 +13,7 @@ const companiesController = new CompaniesController()
 const prefGoianiaAccessController = new PrefGoianiaAccessController()
 const logPrefGoianiaController = new LogPrefGoianiaController()
 const settingsWayFilesController = new SettingsWayFilesController()
+const notesNfseController = new NotesNfseController()
 
 routes.get('/companies', companiesController.index)
 routes.put('/companies', companiesController.upsert)
@@ -26,5 +28,8 @@ routes.get('/log_pref_goiania_max_date_down', logPrefGoianiaController.showMaxDa
 
 routes.get('/settings_way_files', settingsWayFilesController.index)
 routes.put('/settings_way_files/:id', settingsWayFilesController.upsert)
+
+routes.get('/notes_nfse', notesNfseController.index)
+routes.put('/notes_nfse', notesNfseController.upsert)
 
 export default routes

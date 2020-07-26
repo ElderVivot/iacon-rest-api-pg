@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity()
-export default class SettingsDownNotes {
+export default class SettingsWayFiles {
     @PrimaryGeneratedColumn()
     id: number
 
