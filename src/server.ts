@@ -15,11 +15,7 @@ createConnection(typeOrmConfig).then(_ => {
     app.use(cors({ origin: '*' }))
     app.use(bodyParser.json({ limit: '100mb' }))
     app.use(bodyParser.urlencoded({ extended: false }))
-<<<<<<< HEAD
     app.use(routes)
-=======
-    app.use(routes)    
->>>>>>> e84392a210512fecaa0817c360db36839dfe1d64
 
     // app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))
 
