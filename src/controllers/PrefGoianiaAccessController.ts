@@ -61,6 +61,8 @@ class PrefGoianiaAccessController {
             } else {
                 goianiaAcess = await getRepository(PrefGoianiaAccess).save(access)
             }
+            // delete password to dont't show in frontend
+            delete goianiaAcess?.password
             console.log(`- [controllers-PrefGoianiaAccessController.upsert] --> Sucess --> ${1} length`)
             return response.json(goianiaAcess)
         } catch (error) {
