@@ -1,6 +1,7 @@
 import express from 'express'
 
 import CompaniesController from './controllers/CompaniesController'
+import CompaniesGoianiaController from './controllers/CompaniesGoianiaController'
 import LogPrefGoianiaController from './controllers/LogPrefGoianiaController'
 import NotesNfseController from './controllers/NotesNfseController'
 import PrefGoianiaAccessController from './controllers/PrefGoianiaAccessController'
@@ -10,6 +11,7 @@ import SettingsWayFilesController from './controllers/SettingsWayFilesController
 
 const routes = express.Router()
 const companiesController = new CompaniesController()
+const companiesGoianiaController = new CompaniesGoianiaController()
 const prefGoianiaAccessController = new PrefGoianiaAccessController()
 const logPrefGoianiaController = new LogPrefGoianiaController()
 const settingsWayFilesController = new SettingsWayFilesController()
@@ -17,6 +19,9 @@ const notesNfseController = new NotesNfseController()
 
 routes.get('/companies', companiesController.index)
 routes.put('/companies', companiesController.upsert)
+
+routes.get('/companies_goiania', companiesGoianiaController.index)
+routes.put('/companies_goiania', companiesGoianiaController.upsert)
 
 routes.get('/pref_goiania_access', prefGoianiaAccessController.index)
 routes.put('/pref_goiania_access', prefGoianiaAccessController.upsert)
