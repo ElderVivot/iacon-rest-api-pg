@@ -6,7 +6,7 @@ import NotesNfse from '../entity/NotesNfse'
 export default class NotesNfseController {
     async index (request: Request, response: Response): Promise<NotesNfse[] | any> {
         try {
-            const notesNfse = await getRepository(NotesNfse).find()
+            const notesNfse = await getRepository(NotesNfse).find({ ...request.query })
             console.log(`- [controllers-NotesNfseController.index] --> Success --> ${notesNfse.length} length`)
             return response.json(notesNfse)
         } catch (error) {

@@ -6,7 +6,7 @@ import PrefGoianiaAccess from '../entity/PrefGoianiaAccess'
 class PrefGoianiaAccessController {
     async index (request: Request, response: Response): Promise<PrefGoianiaAccess[] | any> {
         try {
-            const prefGoianiaAccess = await getRepository(PrefGoianiaAccess).find()
+            const prefGoianiaAccess = await getRepository(PrefGoianiaAccess).find({ ...request.query })
             console.log(`- [controllers-PrefGoianiaAccessController.index] --> Success --> ${prefGoianiaAccess.length} length`)
             return response.json(prefGoianiaAccess)
         } catch (error) {

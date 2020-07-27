@@ -6,7 +6,7 @@ import CompaniesGoiania from '../entity/CompaniesGoiania'
 export default class CompaniesGoianiaController {
     async index (request: Request, response: Response): Promise<CompaniesGoiania[] | any> {
         try {
-            const companiesGoiania = await getRepository(CompaniesGoiania).find()
+            const companiesGoiania = await getRepository(CompaniesGoiania).find({ ...request.query })
             console.log(`- [controllers-CompaniesGoianiaController.index] --> Success --> ${companiesGoiania.length} length`)
             return response.json(companiesGoiania)
         } catch (error) {

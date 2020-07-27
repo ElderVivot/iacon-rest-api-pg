@@ -5,9 +5,8 @@ import Companies from '../entity/Companies'
 
 class CompaniesController {
     async index (request: Request, response: Response): Promise<Companies[] | any> {
-        const queries = request.query
         try {
-            const companies = await getRepository(Companies).find({ where: [{ ...queries }] })
+            const companies = await getRepository(Companies).find({ ...request.query })
             console.log(`- [controllers-CompaniesController.index] --> Success --> ${companies.length} length`)
             return response.json(companies)
         } catch (error) {

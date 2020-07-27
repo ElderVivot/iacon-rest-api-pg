@@ -6,7 +6,7 @@ import LogPrefGoiania from '../entity/LogPrefGoiania'
 class LogPrefGoianiaController {
     async index (request: Request, response: Response): Promise<LogPrefGoiania[] | any> {
         try {
-            const logPrefGoiania = await getRepository(LogPrefGoiania).find()
+            const logPrefGoiania = await getRepository(LogPrefGoiania).find({ ...request.query })
             console.log(`- [controllers-LogPrefGoianiaController.index] --> Success --> ${logPrefGoiania.length} length`)
             return response.json(logPrefGoiania)
         } catch (error) {
