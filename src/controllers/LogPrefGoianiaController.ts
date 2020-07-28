@@ -6,7 +6,14 @@ import LogPrefGoiania from '../entity/LogPrefGoiania'
 class LogPrefGoianiaController {
     async index (request: Request, response: Response): Promise<LogPrefGoiania[] | any> {
         try {
-            const logPrefGoiania = await getRepository(LogPrefGoiania).find({ ...request.query })
+            const { inscricaoMunicipal, dateLogInicial, dateLogFinal } = request.query
+            const logPrefGoiania = await getRepository(LogPrefGoiania).query(
+                `SELECT *
+                   FROM log_pref_goiania AS logs
+                  WHERE ( logs."inscricaoMunicipal" = $1 OR $1 IS NULL )
+                    AND ( ( DATE(logs."hourLog") BETWEEN DATE($2) AND DATE($3) ) OR ( $2 IS NULL OR $3 IS NULL ) )`,
+                [inscricaoMunicipal, dateLogInicial, dateLogFinal]
+            )
             console.log(`- [controllers-LogPrefGoianiaController.index] --> Success --> ${logPrefGoiania.length} length`)
             return response.json(logPrefGoiania)
         } catch (error) {

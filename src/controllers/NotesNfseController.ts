@@ -6,7 +6,14 @@ import NotesNfse from '../entity/NotesNfse'
 export default class NotesNfseController {
     async index (request: Request, response: Response): Promise<NotesNfse[] | any> {
         try {
-            const notesNfse = await getRepository(NotesNfse).find({ ...request.query })
+            const { inscricaoMunicipal, dateNoteInicial, dateNoteFinal } = request.query
+            const notesNfse = await getRepository(NotesNfse).query(
+                `SELECT *
+                   FROM notes_nfse AS nn
+                  WHERE ( nn."inscricaoMunicipalCompanie" = $1 OR $1 IS NULL )
+                    AND ( ( DATE(nn."dateNote") BETWEEN DATE($2) AND DATE($3) ) OR ( $2 IS NULL OR $3 IS NULL ) )`,
+                [inscricaoMunicipal, dateNoteInicial, dateNoteFinal]
+            )
             console.log(`- [controllers-NotesNfseController.index] --> Success --> ${notesNfse.length} length`)
             return response.json(notesNfse)
         } catch (error) {

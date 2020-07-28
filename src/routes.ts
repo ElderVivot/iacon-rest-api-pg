@@ -22,6 +22,7 @@ routes.put('/companies', companiesController.upsert)
 
 routes.get('/companies_goiania', companiesGoianiaController.index)
 routes.put('/companies_goiania', companiesGoianiaController.upsert)
+routes.get('/companies_goiania_qtd_notes', companiesGoianiaController.qtdNotes)
 
 routes.get('/pref_goiania_access', prefGoianiaAccessController.index)
 routes.put('/pref_goiania_access', prefGoianiaAccessController.upsert)
