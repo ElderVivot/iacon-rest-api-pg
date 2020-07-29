@@ -7,7 +7,7 @@ class SettingsWayFilesController {
     async index (request: Request, response: Response): Promise<SettingsWayFiles | any> {
         try {
             const settingsWayFiles = await getRepository(SettingsWayFiles).findOne()
-            console.log(`- [controllers-SettingsWayFilesController.index] --> Success --> ${SettingsWayFiles.length} length`)
+            console.log(`- [controllers-SettingsWayFilesController.index] --> Success --> ${1} length`)
             return response.json(settingsWayFiles)
         } catch (error) {
             console.log(`- [controllers-SettingsWayFilesController.index] --> Error --> ${error}`)

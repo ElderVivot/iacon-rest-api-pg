@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Unique } from 'typeorm'
 
 @Entity()
-@Unique('primaryKey', ['inscricaoMunicipalCompanie', 'cgceCompanie', 'keyNote'])
+@Unique('primaryKey', ['inscricaoMunicipalCompanie', 'cgceCompanie', 'numberNote', 'keyNote'])
 export default class NotesNfse {
     @PrimaryGeneratedColumn()
     id: number

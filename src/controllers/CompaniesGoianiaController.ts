@@ -18,7 +18,6 @@ export default class CompaniesGoianiaController {
     async upsert (request: Request, response: Response): Promise<CompaniesGoiania | any> {
         try {
             const companieGoiania = request.body
-            console.log(companieGoiania)
             const { inscricaoMunicipal } = companieGoiania
             let companieSaved
 
