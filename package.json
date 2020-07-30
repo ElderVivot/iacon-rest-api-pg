@@ -1,10 +1,10 @@
 {
   "name": "api-rest-pg",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server.js",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/main/server.js",
+    "start": "node dist/server.js",
     "build": "rimraf dist && tsc",
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly --ignore-watch node_modules src/server"
   },
