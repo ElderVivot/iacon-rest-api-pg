@@ -25,13 +25,13 @@ export default class NotesNfseController {
     async upsert (request: Request, response: Response): Promise<NotesNfse | any> {
         try {
             const note = request.body
-            const { inscricaoMunicipalCompanie, codeCompanie, keyNote } = note
+            const { inscricaoMunicipalCompanie, cgceCompanie, numberNote, keyNote } = note
             let noteSaved
 
-            const exist = await getRepository(NotesNfse).findOne({ inscricaoMunicipalCompanie, codeCompanie, keyNote })
+            const exist = await getRepository(NotesNfse).findOne({ inscricaoMunicipalCompanie, cgceCompanie, numberNote, keyNote })
             if (exist) {
-                await getRepository(NotesNfse).update({ inscricaoMunicipalCompanie, codeCompanie, keyNote }, note)
-                noteSaved = await getRepository(NotesNfse).findOne({ inscricaoMunicipalCompanie, codeCompanie, keyNote })
+                await getRepository(NotesNfse).update({ inscricaoMunicipalCompanie, cgceCompanie, numberNote, keyNote }, note)
+                noteSaved = await getRepository(NotesNfse).findOne({ inscricaoMunicipalCompanie, cgceCompanie, numberNote, keyNote })
             } else {
                 noteSaved = await getRepository(NotesNfse).save(note)
             }
