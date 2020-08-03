@@ -53,6 +53,6 @@ export default class LogPrefGoiania {
     @Column({ nullable: true, default: 0 })
     qtdNotesDown: Number
 
-    @Column({ nullable: true, default: 0 })
-    qtdReprocessed: Number
+    @Column({ default: 0 })
+    qtdTimesReprocessed: Number
 }

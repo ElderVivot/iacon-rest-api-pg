@@ -36,6 +36,7 @@ routes.put('/pref_goiania_access_upsert_many', prefGoianiaAccessController.upser
 
 routes.get('/log_pref_goiania', logPrefGoianiaController.index)
 routes.post('/log_pref_goiania', logPrefGoianiaController.store)
+routes.put('/log_pref_goiania/:id', logPrefGoianiaController.update)
 routes.get('/log_pref_goiania_max_date_down', logPrefGoianiaMaxDateEndDown.show)
 routes.get('/log_pref_goiania_errors', logPrefGoianiaErrors.index)
 

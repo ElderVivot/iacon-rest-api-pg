@@ -32,6 +32,27 @@ class LogPrefGoianiaController {
             return response.status(500).json({ message: 'Error save LogPrefGoianiaController' + error })
         }
     }
+
+    async update (request: Request, response: Response): Promise<LogPrefGoiania | any> {
+        try {
+            const { id } = request.params
+
+            const existData = await getRepository(LogPrefGoiania).findByIds([id])
+            let logPrefGoiania
+            if (existData.length > 0) {
+                const update = await getRepository(LogPrefGoiania).update(id, request.body)
+                if (update) {
+                    logPrefGoiania = await getRepository(LogPrefGoiania).findOne(id)
+                }
+            }
+
+            console.log(`- [controllers-LogPrefGoianiaController.update] --> Sucess --> ${1} length`)
+            return response.json(logPrefGoiania)
+        } catch (error) {
+            console.log(`- [controllers-LogPrefGoianiaController.update] --> Error --> ${error}`)
+            return response.status(500).json({ message: 'Error save LogPrefGoianiaController' + error })
+        }
+    }
 }
 
 export default LogPrefGoianiaController
