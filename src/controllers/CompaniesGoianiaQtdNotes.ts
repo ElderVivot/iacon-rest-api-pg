@@ -15,6 +15,18 @@ export default class CompaniesGoianiaQtdNotes {
                              ON    nn."inscricaoMunicipalCompanie" = cg."inscricaoMunicipal"
                   WHERE ( cg."inscricaoMunicipal" = $1 OR $1 IS NULL )
                     AND ( ( DATE(nn."dateNote") BETWEEN DATE($2) AND DATE($3) ) OR ( $2 IS NULL OR $3 IS NULL ) )
+                GROUP BY cg."id", cg."inscricaoMunicipal", cg."name", cg."cgce", cg."code"
+                UNION ALL                  
+                 SELECT cg."id", cg."inscricaoMunicipal", cg."name", cg."cgce", cg."code", 0 AS qtd_notes,
+                        0 AS amountServicos
+                   FROM companies_goiania AS cg
+                        INNER JOIN log_pref_goiania AS lpg
+                             ON    lpg."inscricaoMunicipal" = cg."inscricaoMunicipal" 
+                 WHERE DATE(lpg."hourLog" ) BETWEEN DATE($2) AND DATE($3)
+                   AND NOT EXISTS ( SELECT 1
+                                      FROM notes_nfse AS nn
+                                     WHERE nn."inscricaoMunicipalCompanie" = cg."inscricaoMunicipal" 
+                                       AND DATE(nn."dateNote") BETWEEN DATE($2) AND DATE($3) )
                 GROUP BY cg."id", cg."inscricaoMunicipal", cg."name", cg."cgce", cg."code"`,
                 [inscricaoMunicipal, dateNoteInicial, dateNoteFinal]
             )
