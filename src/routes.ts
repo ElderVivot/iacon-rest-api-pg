@@ -3,6 +3,9 @@ import express from 'express'
 import CompaniesController from './controllers/CompaniesController'
 import CompaniesGoianiaController from './controllers/CompaniesGoianiaController'
 import CompaniesGoianiaQtdNotes from './controllers/CompaniesGoianiaQtdNotes'
+import LogNfeNfceGOController from './controllers/LogNfeNfceGOController'
+import LogNfeNfceGOErrors from './controllers/LogNfeNfceGOErrors'
+import LogNfeNfceGOMaxDateEndDown from './controllers/LogNfeNfceGOMaxDateEndDown'
 import LogPrefGoianiaController from './controllers/LogPrefGoianiaController'
 import LogPrefGoianiaErrors from './controllers/LogPrefGoianiaErrors'
 import LogPrefGoianiaMaxDateEndDown from './controllers/LogPrefGoianiaMaxDateEndDown'
@@ -18,8 +21,11 @@ const companiesGoianiaController = new CompaniesGoianiaController()
 const companiesGoianiaQtdNotes = new CompaniesGoianiaQtdNotes()
 const prefGoianiaAccessController = new PrefGoianiaAccessController()
 const logPrefGoianiaController = new LogPrefGoianiaController()
+const logNfeNfceGOController = new LogNfeNfceGOController()
 const logPrefGoianiaErrors = new LogPrefGoianiaErrors()
+const logNfeNfceGOErrors = new LogNfeNfceGOErrors()
 const logPrefGoianiaMaxDateEndDown = new LogPrefGoianiaMaxDateEndDown()
+const logNfeNfceGOMaxDateEndDown = new LogNfeNfceGOMaxDateEndDown()
 const settingsWayFilesController = new SettingsWayFilesController()
 const notesNfseController = new NotesNfseController()
 
@@ -45,5 +51,11 @@ routes.put('/settings_way_files/:id', settingsWayFilesController.upsert)
 
 routes.get('/notes_nfse', notesNfseController.index)
 routes.put('/notes_nfse', notesNfseController.upsert)
+
+routes.get('/log_nfe_nfce_go', logNfeNfceGOController.index)
+routes.post('/log_nfe_nfce_go', logNfeNfceGOController.store)
+routes.put('/log_nfe_nfce_go/:id', logNfeNfceGOController.update)
+routes.get('/log_nfe_nfce_go_max_date_down', logNfeNfceGOMaxDateEndDown.show)
+routes.get('/log_nfe_nfce_go_errors', logNfeNfceGOErrors.index)
 
 export default routes
