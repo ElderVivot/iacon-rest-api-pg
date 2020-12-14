@@ -58,4 +58,7 @@ export default class Companies {
 
     @Column({ nullable: true })
     inscricaoMunicipal: string
+
+    @Column({ nullable: true })
+    uf: string
 }

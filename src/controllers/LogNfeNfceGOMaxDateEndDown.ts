@@ -12,7 +12,9 @@ class LogNfeNfceGOMaxDateEndDown {
                    FROM log_nfe_nfce_go AS logs
                   WHERE logs."cgceCompanie" = $1
                     AND logs."modelNF" = $2
-                    AND logs."typeLog" = 'success'`,
+                    AND ( logs."typeLog" IN ('success')
+                        OR ( logs."typeLog" IN ('warning') 
+                           AND logs."messageError" IN ('NOT_EXIST_NOTES_TO_DOWN', 'NOT_EXIST_NOTES') ) )`,
                 [cgceCompanie, modelNF]
             )
             console.log(`- [controllers-LogNfeNfceGOMaxDateEndDown.show] --> Success --> ${logNfeNfceGO.length} length`)
