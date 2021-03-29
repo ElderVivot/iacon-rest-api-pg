@@ -26,8 +26,8 @@ goto check_Permissions
 :startInstallation
   echo Installing service
   :: Set your service name and its description here
-  set SERVICE_NAME=IaconRestApi
-  set SERVICE_DESCRIPTION=IaconRestApi
+  set SERVICE_NAME=AeronRestApi
+  set SERVICE_DESCRIPTION=AeronRestApi
 
   :: replace with the absolute path where node.exe can be found
   nssm install %SERVICE_NAME% "C:\Program Files\nodejs\node.exe"
@@ -46,4 +46,3 @@ goto check_Permissions
   :: Start the service
   nssm start %SERVICE_NAME%
   echo Successfully installed and started service %SERVICE_NAME%
-  pause
