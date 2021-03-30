@@ -54,6 +54,12 @@ export default class LogNfeNfceGO {
     @Column({ nullable: true, default: 0 })
     qtdNotesDown: number
 
+    @Column({ nullable: true, default: 0 })
+    pageInicial: number
+
+    @Column({ nullable: true, default: 0 })
+    pageFinal: number
+
     @Column({ default: 0 })
     qtdTimesReprocessed: number
 }
