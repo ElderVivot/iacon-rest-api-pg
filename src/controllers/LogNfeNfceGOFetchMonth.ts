@@ -8,8 +8,8 @@ class LogNfeNfceGOFetchCompetence {
         try {
             const { cgceCompanie, modelNF, month, year } = request.query
             const logNfeNfceGO = await getRepository(LogNfeNfceGO).query(
-                `SELECT EXTRACT( DAY FROM MIN(logs."dateStartDown") ) AS dateStartDown, 
-                        EXTRACT( DAY FROM MAX(logs."dateEndDown") ) AS dateEndDown
+                `SELECT EXTRACT( DAY FROM MIN(logs."dateStartDown") ) AS daymindown, 
+                        EXTRACT( DAY FROM MAX(logs."dateEndDown") ) AS daymaxdown
                    FROM log_nfe_nfce_go AS logs
                   WHERE logs."cgceCompanie" = '${cgceCompanie}'
                     AND logs."modelNF" = '${modelNF}'
