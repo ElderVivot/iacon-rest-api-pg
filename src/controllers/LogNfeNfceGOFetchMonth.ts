@@ -8,13 +8,13 @@ class LogNfeNfceGOFetchCompetence {
         try {
             const { cgceCompanie, modelNF, month, year } = request.query
             const logNfeNfceGO = await getRepository(LogNfeNfceGO).query(
-                `SELECT logs."cgceCompanie", logs."modelNF", MIN(logs."dateStartDown"), MAX(logs."dateEndDown")
+                `SELECT EXTRACT( DAY FROM MIN(logs."dateStartDown") ) AS dateStartDown, 
+                        EXTRACT( DAY FROM MAX(logs."dateEndDown") ) AS dateEndDown
                    FROM log_nfe_nfce_go AS logs
                   WHERE logs."cgceCompanie" = '${cgceCompanie}'
                     AND logs."modelNF" = '${modelNF}'
                     AND EXTRACT(MONTH FROM logs."dateStartDown") = ${month}
-                    AND EXTRACT(YEAR FROM logs."dateStartDown") = ${year}
-               GROUP BY logs."cgceCompanie", logs."modelNF"`
+                    AND EXTRACT(YEAR FROM logs."dateStartDown") = ${year}`
             )
             console.log(`- [controllers-LogNfeNfceGOFetchCompetence.show] --> Success --> ${logNfeNfceGO.length} length`)
             return response.json(logNfeNfceGO[0])
