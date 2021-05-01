@@ -6,7 +6,7 @@ import LogNfeNfceGO from '../entity/LogNfeNfceGO'
 class LogNfeNfceGOMaxDateEndDown {
     async show (request: Request, response: Response): Promise<LogNfeNfceGO | any> {
         try {
-            const { cgceCompanie, modelNF, month, year } = request.query
+            const { cgceCompanie, modelNF } = request.query
             const logNfeNfceGO = await getRepository(LogNfeNfceGO).query(
                 `SELECT MAX(logs."dateEndDown") AS dateDownMax
                    FROM log_nfe_nfce_go AS logs
@@ -14,9 +14,7 @@ class LogNfeNfceGOMaxDateEndDown {
                     AND logs."modelNF" = '${modelNF}'
                     AND ( logs."typeLog" IN ('success')
                         OR ( logs."typeLog" IN ('warning') 
-                           AND logs."messageError" IN ('NOT_EXIST_NOTES_TO_DOWN', 'NOT_EXIST_NOTES') ) )
-                    AND EXTRACT(MONTH FROM logs."dateStartDown") = ${month}
-                    AND EXTRACT(YEAR FROM logs."dateStartDown") = ${year}`
+                           AND logs."messageError" IN ('NOT_EXIST_NOTES_TO_DOWN', 'NOT_EXIST_NOTES') ) )`
             )
             console.log(`- [controllers-LogNfeNfceGOMaxDateEndDown.show] --> Success --> ${logNfeNfceGO.length} length`)
             return response.json(logNfeNfceGO[0])
