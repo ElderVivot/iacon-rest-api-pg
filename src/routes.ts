@@ -7,6 +7,7 @@ import LogNfeNfceGOController from './controllers/LogNfeNfceGOController'
 import LogNfeNfceGOErrors from './controllers/LogNfeNfceGOErrors'
 import LogNfeNfceGOFetchMonth from './controllers/LogNfeNfceGOFetchMonth'
 import LogNfeNfceGOMaxDateEndDown from './controllers/LogNfeNfceGOMaxDateEndDown'
+import LogNfeNfceGOMaxDateEndDownPerMonth from './controllers/LogNfeNfceGOMaxDateEndDownPerMonth'
 import LogPrefGoianiaController from './controllers/LogPrefGoianiaController'
 import LogPrefGoianiaErrors from './controllers/LogPrefGoianiaErrors'
 import LogPrefGoianiaMaxDateEndDown from './controllers/LogPrefGoianiaMaxDateEndDown'
@@ -27,6 +28,7 @@ const logPrefGoianiaErrors = new LogPrefGoianiaErrors()
 const logNfeNfceGOErrors = new LogNfeNfceGOErrors()
 const logPrefGoianiaMaxDateEndDown = new LogPrefGoianiaMaxDateEndDown()
 const logNfeNfceGOMaxDateEndDown = new LogNfeNfceGOMaxDateEndDown()
+const logNfeNfceGOMaxDateEndDownPerMonth = new LogNfeNfceGOMaxDateEndDownPerMonth()
 const logNfeNfceGOFetchMonth = new LogNfeNfceGOFetchMonth()
 const settingsWayFilesController = new SettingsWayFilesController()
 const notesNfseController = new NotesNfseController()
@@ -58,6 +60,7 @@ routes.get('/log_nfe_nfce_go', logNfeNfceGOController.index)
 routes.post('/log_nfe_nfce_go', logNfeNfceGOController.store)
 routes.put('/log_nfe_nfce_go/:id', logNfeNfceGOController.update)
 routes.get('/log_nfe_nfce_go_max_date_down', logNfeNfceGOMaxDateEndDown.show)
+routes.get('/log_nfe_nfce_go_max_date_down_per_month', logNfeNfceGOMaxDateEndDownPerMonth.show)
 routes.get('/log_nfe_nfce_go_errors', logNfeNfceGOErrors.index)
 routes.get('/log_nfe_nfce_go_fetch_competence', logNfeNfceGOFetchMonth.show)
 
