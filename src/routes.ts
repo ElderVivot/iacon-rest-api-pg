@@ -6,6 +6,7 @@ import CompaniesGoianiaQtdNotes from './controllers/CompaniesGoianiaQtdNotes'
 import LogNfeNfceGOController from './controllers/LogNfeNfceGOController'
 import LogNfeNfceGOErrors from './controllers/LogNfeNfceGOErrors'
 import LogNfeNfceGOFetchMonth from './controllers/LogNfeNfceGOFetchMonth'
+import LogNfeNfceGOFetchMonthWarnSuccess from './controllers/LogNfeNfceGOFetchMonthWarnSuccess'
 import LogNfeNfceGOMaxDateEndDown from './controllers/LogNfeNfceGOMaxDateEndDown'
 import LogNfeNfceGOMaxDateEndDownPerMonth from './controllers/LogNfeNfceGOMaxDateEndDownPerMonth'
 import LogPrefGoianiaController from './controllers/LogPrefGoianiaController'
@@ -30,6 +31,7 @@ const logPrefGoianiaMaxDateEndDown = new LogPrefGoianiaMaxDateEndDown()
 const logNfeNfceGOMaxDateEndDown = new LogNfeNfceGOMaxDateEndDown()
 const logNfeNfceGOMaxDateEndDownPerMonth = new LogNfeNfceGOMaxDateEndDownPerMonth()
 const logNfeNfceGOFetchMonth = new LogNfeNfceGOFetchMonth()
+const logNfeNfceGOFetchMonthWarnSuccess = new LogNfeNfceGOFetchMonthWarnSuccess()
 const settingsWayFilesController = new SettingsWayFilesController()
 const notesNfseController = new NotesNfseController()
 
@@ -63,5 +65,6 @@ routes.get('/log_nfe_nfce_go_max_date_down', logNfeNfceGOMaxDateEndDown.show)
 routes.get('/log_nfe_nfce_go_max_date_down_per_month', logNfeNfceGOMaxDateEndDownPerMonth.show)
 routes.get('/log_nfe_nfce_go_errors', logNfeNfceGOErrors.index)
 routes.get('/log_nfe_nfce_go_fetch_competence', logNfeNfceGOFetchMonth.show)
+routes.get('/log_nfe_nfce_go_fetch_warn_success_competence', logNfeNfceGOFetchMonthWarnSuccess.show)
 
 export default routes
