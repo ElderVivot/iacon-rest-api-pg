@@ -8,7 +8,7 @@ class LogNfeNfceGOErrors {
         try {
             const logNfeNfceGO = await getRepository(LogNfeNfceGO).query(
                 `SELECT logs."id", logs."cgceCompanie", logs."modelNF", logs."situacaoNF", logs."dateStartDown", logs."dateEndDown",
-                        logs."qtdTimesReprocessed", logs."wayCertificate"
+                        logs."qtdTimesReprocessed", logs."wayCertificate", logs."pageInicial", logs."pageFinal"
                    FROM log_nfe_nfce_go AS logs
                   WHERE logs."typeLog" = 'error'
                     AND logs."qtdTimesReprocessed" <= 7`,

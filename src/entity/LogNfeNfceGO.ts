@@ -58,6 +58,9 @@ export default class LogNfeNfceGO {
     qtdNotesDown: number
 
     @Column({ nullable: true, default: 0 })
+    qtdPagesTotal: number
+
+    @Column({ nullable: true, default: 0 })
     pageInicial: number
 
     @Column({ nullable: true, default: 0 })
