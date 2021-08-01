@@ -24,6 +24,9 @@ export default class LogNfeNfceGO {
     @Column({ nullable: true })
     modelNF: string
 
+    @Column({ nullable: true })
+    situacaoNF: string
+
     @Column()
     wayCertificate: string
 

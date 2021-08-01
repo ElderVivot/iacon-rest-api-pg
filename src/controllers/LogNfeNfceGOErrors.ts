@@ -7,7 +7,7 @@ class LogNfeNfceGOErrors {
     async index (request: Request, response: Response): Promise<LogNfeNfceGO[] | any> {
         try {
             const logNfeNfceGO = await getRepository(LogNfeNfceGO).query(
-                `SELECT logs."id", logs."cgceCompanie", logs."modelNF", logs."dateStartDown", logs."dateEndDown",
+                `SELECT logs."id", logs."cgceCompanie", logs."modelNF", logs."situacaoNF", logs."dateStartDown", logs."dateEndDown",
                         logs."qtdTimesReprocessed", logs."wayCertificate"
                    FROM log_nfe_nfce_go AS logs
                   WHERE logs."typeLog" = 'error'
