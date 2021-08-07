@@ -12,9 +12,9 @@ export default class LogNfeNfceGOErrorsOrProcessing {
             else {
                 // reprocess what is in processing only after 30 minutes last log
                 filterPerTypeLog = `
-                    ( DATE_PART('day', now()::timestamp - logs."updatedAt"::timestamp) * 24 
-                    + DATE_PART('hour', now()::timestamp - logs."updatedAt"::timestamp) ) * 60 
-                    + DATE_PART('minute', now()::timestamp - logs."updatedAt"::timestamp ) > 30
+                    AND ( DATE_PART('day', now()::timestamp - logs."updatedAt"::timestamp) * 24 
+                          + DATE_PART('hour', now()::timestamp - logs."updatedAt"::timestamp) ) * 60 
+                          + DATE_PART('minute', now()::timestamp - logs."updatedAt"::timestamp ) > 30
                 `
             }
 
@@ -22,7 +22,7 @@ export default class LogNfeNfceGOErrorsOrProcessing {
                 `SELECT logs."id", logs."cgceCompanie", logs."modelNF", logs."situacaoNF", logs."dateStartDown", logs."dateEndDown",
                         logs."qtdTimesReprocessed", logs."wayCertificate", logs."pageInicial", logs."pageFinal"
                    FROM log_nfe_nfce_go AS logs
-                  WHERE logs."typeLog" = ${typeLog}
+                  WHERE logs."typeLog" = '${typeLog}'
                     ${filterPerTypeLog}`,
                 []
             )
