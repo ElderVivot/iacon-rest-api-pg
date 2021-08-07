@@ -16,7 +16,7 @@ class LogNfeNfceGOFetchCompetence {
                     AND logs."situacaoNF" = '${situacaoNF}'
                     AND EXTRACT(MONTH FROM logs."dateStartDown") = ${month}
                     AND EXTRACT(YEAR FROM logs."dateStartDown") = ${year}
-                    AND logs."typeLog" IN ('warning', 'success')`
+                    AND logs."typeLog" IN ('warning', 'success', 'processing')`
             )
             console.log(`- [controllers-LogNfeNfceGOFetchCompetence.show] --> Success --> ${logNfeNfceGO.length} length`)
             return response.json(logNfeNfceGO[0])

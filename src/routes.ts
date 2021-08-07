@@ -4,7 +4,7 @@ import CompaniesController from './controllers/CompaniesController'
 import CompaniesGoianiaController from './controllers/CompaniesGoianiaController'
 import CompaniesGoianiaQtdNotes from './controllers/CompaniesGoianiaQtdNotes'
 import LogNfeNfceGOController from './controllers/LogNfeNfceGOController'
-import LogNfeNfceGOErrors from './controllers/LogNfeNfceGOErrors'
+import LogNfeNfceGOErrorsOrProcessing from './controllers/LogNfeNfceGOErrorsOrProcessing'
 import LogNfeNfceGOFetchMonth from './controllers/LogNfeNfceGOFetchMonth'
 import LogNfeNfceGOFetchMonthWarnSuccess from './controllers/LogNfeNfceGOFetchMonthWarnSuccess'
 import LogNfeNfceGOMaxDateEndDown from './controllers/LogNfeNfceGOMaxDateEndDown'
@@ -26,7 +26,7 @@ const prefGoianiaAccessController = new PrefGoianiaAccessController()
 const logPrefGoianiaController = new LogPrefGoianiaController()
 const logNfeNfceGOController = new LogNfeNfceGOController()
 const logPrefGoianiaErrors = new LogPrefGoianiaErrors()
-const logNfeNfceGOErrors = new LogNfeNfceGOErrors()
+const logNfeNfceGOErrorsOrProcessing = new LogNfeNfceGOErrorsOrProcessing()
 const logPrefGoianiaMaxDateEndDown = new LogPrefGoianiaMaxDateEndDown()
 const logNfeNfceGOMaxDateEndDown = new LogNfeNfceGOMaxDateEndDown()
 const logNfeNfceGOMaxDateEndDownPerMonth = new LogNfeNfceGOMaxDateEndDownPerMonth()
@@ -63,7 +63,7 @@ routes.post('/log_nfe_nfce_go', logNfeNfceGOController.store)
 routes.put('/log_nfe_nfce_go/:id', logNfeNfceGOController.update)
 routes.get('/log_nfe_nfce_go_max_date_down', logNfeNfceGOMaxDateEndDown.show)
 routes.get('/log_nfe_nfce_go_max_date_down_per_month', logNfeNfceGOMaxDateEndDownPerMonth.show)
-routes.get('/log_nfe_nfce_go_errors', logNfeNfceGOErrors.index)
+routes.get('/log_nfe_nfce_go_errors_or_processing', logNfeNfceGOErrorsOrProcessing.index)
 routes.get('/log_nfe_nfce_go_fetch_competence', logNfeNfceGOFetchMonth.show)
 routes.get('/log_nfe_nfce_go_fetch_warn_success_competence', logNfeNfceGOFetchMonthWarnSuccess.show)
 

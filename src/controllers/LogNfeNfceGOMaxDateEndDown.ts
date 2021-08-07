@@ -12,7 +12,7 @@ class LogNfeNfceGOMaxDateEndDown {
                    FROM log_nfe_nfce_go AS logs
                   WHERE logs."cgceCompanie" = '${cgceCompanie}'
                     AND logs."modelNF" = '${modelNF}'
-                    AND ( logs."typeLog" IN ('success')
+                    AND ( logs."typeLog" IN ('success', 'processing')
                         OR ( logs."typeLog" IN ('warning') 
                            AND logs."messageError" IN ('NOT_EXIST_NOTES_TO_DOWN', 'NOT_EXIST_NOTES') ) )`
             )
