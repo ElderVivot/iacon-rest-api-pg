@@ -40,7 +40,7 @@ export default class LogNfeNfceGO {
     dateEndDown: Date
 
     @Column()
-    typeLog: 'success' | 'error' | 'warning' | 'processing'
+    typeLog: 'success' | 'error' | 'warning' | 'processing' | 'to_process'
 
     @Column()
     messageLog: string

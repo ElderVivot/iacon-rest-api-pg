@@ -9,7 +9,7 @@ export default class LogNfeNfceGOErrorsOrProcessing {
             const { typeLog } = request.query
             let filterPerTypeLog = ''
             if (typeLog === 'error') filterPerTypeLog = 'AND logs."qtdTimesReprocessed" <= 7' // reprocess max 7 times
-            else {
+            else if (typeLog === 'warning') {
                 // reprocess what is in processing only after 30 minutes last log
                 filterPerTypeLog = `
                     AND ( DATE_PART('day', now()::timestamp - logs."updatedAt"::timestamp) * 24 
