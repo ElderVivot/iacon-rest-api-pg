@@ -61,4 +61,7 @@ export default class Companies {
 
     @Column({ nullable: true })
     uf: string
+
+    @Column({ nullable: true })
+    regimeFiscal: string
 }
